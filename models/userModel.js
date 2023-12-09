@@ -30,6 +30,10 @@ const userSchema = Schema(
       type: Schema.Types.ObjectId,
       required: [true, 'User status is required'],
     },
+    birthday: {
+      type: Date,
+      required: [true, 'User birthday is required'],
+    },
     lastActivityDate: {
       type: Date,
       required: [true, 'User last activity date is required'],

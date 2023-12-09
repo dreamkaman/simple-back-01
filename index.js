@@ -15,3 +15,15 @@ mongoose
     console.log(error.message);
     process.exit(1);
   });
+
+//Bot EVeteran
+// const { bot } = require('./bot');
+
+// bot.on('message', msg => {
+//   const text = msg.text;
+//   const chatId = msg.chat.id;
+
+//   if (text === '/start') {
+//     bot.sendMessage(chatId, 'Ласкаво просимо до чат-бота е-Ветеран');
+//   }
+// });
