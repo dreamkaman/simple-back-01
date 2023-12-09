@@ -8,14 +8,13 @@ const getAllSegments = async (_req, res, _next) => {
     const segments = await Segment.find().exec();
 
     const newSegments = segments.map(segment => {
-      const { _id, segmentFilter, segmentName } = segment;
+      const { _id, idRegion, idUserStatus, _age, segmentName } = segment;
 
-      const { _age, idRegion } = JSON.parse(segmentFilter);
       const usersCount = users.filter(
         user => (idRegion && String(user.idRegion) === String(idRegion)) || !idRegion,
       ).length;
 
-      return { _id, segmentFilter, segmentName, usersCount };
+      return { _id, idRegion, idUserStatus, _age, segmentName, usersCount };
     });
     return res.json({
       newSegments,
