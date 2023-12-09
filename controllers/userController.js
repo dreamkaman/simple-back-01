@@ -1,11 +1,45 @@
 const { User } = require('../models/userModel');
+const { Region } = require('../models/regionModel');
 
-const getAllUsers = async (_req, res, _next) => {
+const getAllUsers = async (req, res, _next) => {
   try {
-    const users = await User.find().exec();
+    const { page = 1, limit = 50, idregion, iduserstatus } = req.query;
+
+    const skip = (page - 1) * limit;
+
+    let searchValue = {};
+
+    if (idregion) {
+      searchValue = { ...searchValue, idRegion: idregion };
+    }
+
+    if (iduserstatus) {
+      searchValue = { ...searchValue, idUserstatus: iduserstatus };
+    }
+
+    const users = await User.find(searchValue).skip(skip).limit(limit).exec();
 
     return res.json({
       users,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+const getAllUsersByRegion = async (req, res, _next) => {
+  try {
+    const regions = await Region.find().exec();
+    const users = await User.find().exec();
+
+    const newRegions = regions.map(region => {
+      const usersCount = users.filter(user => String(user.idRegion) === String(region._id)).length;
+      return { regionName: region.regionName, usersCount };
+    });
+
+    return res.json({
+      newRegions,
     });
   } catch (error) {
     console.error(error);
@@ -31,4 +65,5 @@ const postUser = async (req, res, _next) => {
 module.exports = {
   getAllUsers,
   postUser,
+  getAllUsersByRegion,
 };

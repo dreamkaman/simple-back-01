@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const userSchema = Schema(
+const appealSchema = Schema(
   {
     idUser: {
       type: Schema.Types.ObjectId,
@@ -16,14 +16,15 @@ const userSchema = Schema(
     },
     idAppealStatus: {
       type: Schema.Types.ObjectId,
+      ref: 'Appeal',
       required: [true, 'Id activity status is required'],
     },
   },
   { versionKey: false, timestamps: true },
 );
 
-const User = model('user', userSchema);
+const Appeal = model('appeal', appealSchema);
 
 module.exports = {
-  User,
+  Appeal,
 };

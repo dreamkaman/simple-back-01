@@ -7,6 +7,7 @@ require('dotenv').config();
 const { checkDuplicates } = require('./middleWares/checkDuplicates');
 
 const usersRouter = require('./routes/usersRoutes');
+const appealsRouter = require('./routes/appealsRoutes');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/users', checkDuplicates, usersRouter);
+app.use('/api/appeals', appealsRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Rout is not found' });
