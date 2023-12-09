@@ -10,6 +10,7 @@ const usersRouter = require('./routes/usersRoutes');
 const appealsRouter = require('./routes/appealsRoutes');
 const segmentsRouter = require('./routes/segmentsRoutes');
 const regionRouter = require('./routes/regionRoutes');
+const userStatusesRouter = require('./routes/userStatusesRoutes');
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use('/api/users', checkDuplicates, usersRouter);
 app.use('/api/appeals', appealsRouter);
 app.use('/api/segments', segmentsRouter);
 app.use('/api/regions', regionRouter);
+app.use('/api/userstatuses', userStatusesRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Rout is not found' });
