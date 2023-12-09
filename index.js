@@ -27,6 +27,6 @@ mongoose
 
 //Bot EVeteran
 
-// const { botLogic } = require('./bot');
+const { botLogic } = require('./bot');
 
-// botLogic();
+botLogic();
