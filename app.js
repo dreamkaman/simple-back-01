@@ -9,6 +9,7 @@ const { checkDuplicates } = require('./middleWares/checkDuplicates');
 const usersRouter = require('./routes/usersRoutes');
 const appealsRouter = require('./routes/appealsRoutes');
 const segmentsRouter = require('./routes/segmentsRoutes');
+const regionRouter = require('./routes/regionRoutes');
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use('/api/users', checkDuplicates, usersRouter);
 app.use('/api/appeals', appealsRouter);
 app.use('/api/segments', segmentsRouter);
+app.use('/api/regions', regionRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Rout is not found' });
