@@ -17,13 +17,7 @@ mongoose
   });
 
 //Bot EVeteran
-// const { bot } = require('./bot');
 
-// bot.on('message', msg => {
-//   const text = msg.text;
-//   const chatId = msg.chat.id;
+// const { botLogic } = require('./bot');
 
-//   if (text === '/start') {
-//     bot.sendMessage(chatId, 'Ласкаво просимо до чат-бота е-Ветеран');
-//   }
-// });
+// botLogic();
