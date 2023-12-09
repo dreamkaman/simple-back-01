@@ -1,11 +1,11 @@
-const https = require('https');
+// const https = require('https');
 
-fs = require('fs');
+// fs = require('fs');
 
-const options = {
-  key: fs.readFileSync('/etc/letsencrypt/live/alpha.deadalice.xyz/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/alpha.deadalice.xyz/fullchain.pem'),
-};
+// const options = {
+//   key: fs.readFileSync('/etc/letsencrypt/live/alpha.deadalice.xyz/privkey.pem'),
+//   cert: fs.readFileSync('/etc/letsencrypt/live/alpha.deadalice.xyz/fullchain.pem'),
+// };
 
 const app = require('./app');
 
@@ -19,7 +19,7 @@ mongoose
     app.listen(PORT, () => {
       console.log(`Database connection successful. Server run on port ${PORT}`);
     });
-    https.createServer(options, app).listen(4000);
+    // https.createServer(options, app).listen(4000);
   })
   .catch(error => {
     console.log(error.message);
@@ -28,6 +28,6 @@ mongoose
 
 //Bot EVeteran
 
-// const { botLogic } = require('./bot');
+const { botLogic } = require('./bot');
 
-// botLogic();
+botLogic();
