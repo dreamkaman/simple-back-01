@@ -16,10 +16,9 @@ const { DB_HOST, PORT = 3000 } = process.env;
 mongoose
   .connect(DB_HOST)
   .then(() => {
-    app.listen(PORT, () => {
+    https.createServer(options, app).listen(PORT,() => {
       console.log(`Database connection successful. Server run on port ${PORT}`);
     });
-    https.createServer(options, app).listen(8080);
   })
   .catch(error => {
     console.log(error.message);
